@@ -21,7 +21,7 @@
             <li><a href="about.html">About</a></li>
             <li><a href="rental.html">Rental Information</a></li>
             <li><a href="inventory.html">Inventory</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="contact.php">Contact Us</a></li>
             <li><a href="signon.html">Sign In</a></li>
         </ul>
     </nav>
@@ -29,25 +29,68 @@
     <!-- Main -->
     <div id="content">
     <main>
-        <h2> Current Inventory</h2>
-        <? php
-            $username = "admin";
-            $password = "Tiff1tre2maddy3";
-            $host = "aims-demo1.cjiww4oiz41u.us-east-1.rds.amazonaws.com";
-            $database = "aims";
+        <!-- Style for PHP table -->
+        <style>
+            table {border: 1px solid;}
 
-            $mysqli = new mysqli($host, $username, $password, $database);
-            $query = "SELECT * FROM inventory";
-            if ($result = $mysqli->query($query)) {
+            th{
+                border: 1px solid;
+                background-color: #0A2240;
+                color: #ffffff;
 
-                while ($row = $result->fetch_assoc()) {
-                    $field1name = $row["IID"];
-                    $field2name = $row["IIEM_NAME"];
+            }
+            td {
+                border: 1px solid;
+                padding: 15px;
+                text-align: center;
+                width: 500px;
+        </style>
+
+    <h1>Current Inventory</h1>
+    <br>
+
+    <table><tr>
+        <th>IID</th>
+        <th>Item Name</th>
+        <th>Item Category</th>
+        <th>Item Color</th>
+        <th>Quantity</th>
+        <th>Add On Needed?</th>
+        <th>Purchase Item</th>
+    </tr>
+        <?php
+        // Refer to connection file -- Connects to the database
+        include 'connect.php';
+
+        //Echo table headers
 
 
-                    echo '<b>'.$field1name.$field2name.'</b><br />';
-    }
+        //MySQL Select Statement & query
+        $sql = "SELECT * FROM items WHERE CHECKED_OUT = 0";
+        $result = $conn->query($sql);
+
+        //Determines if there is data in the tables
+        //Checks to see if the number of rows from the query is more than 0
+        //Fetches each row from the query
+        if($result->num_rows > 0){
+            while ($row=$result->fetch_assoc()) {
+            //Prints each row in the table
+            echo "<tr>";
+            echo "<td>". $row['IID'] . "</td>";
+            echo "<td>". $row['ITEM_NAME'] . "</td>";
+            echo "<td>". $row["ITEM_CATEGORY"]."</td>";
+            echo "<td>". $row['ITEM_COLOR'] . "</td>";
+            echo "<td>". $row['QUANTITY'] . "</td>";
+            echo "<td>". $row['ADD_ON_NEEDED'] . "</td>";
+            echo "<td>". $row['PURCHASE_ITEM'] . "</td>";
+            echo "</tr>";
+        }
+        } else{
+                echo "Nothing here :(";
+        }
+
         ?>
+    </table>
     </main>
     </div>
     <!-- Footer -->
