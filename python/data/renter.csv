@@ -1,0 +1,3 @@
+RID,FNAME,LNAME,EMAIL,PICKUP,DROPOFF,ITEM_COLOR,ITEM_NAME,IID,PID
+1000,Kayla,Engel,kayla.engel.19@cnu.edu,2023-01-01,2023-01-02,,,1000,
+1002,Schyler,Pauley,schyler.pauley.19@cnu.edu,2023-01-04,2023-01-5,,,1001,

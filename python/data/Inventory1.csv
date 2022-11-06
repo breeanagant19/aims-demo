@@ -1,0 +1,52 @@
+IID,ITEM_NAME,ITEM_CATEGORY,ITEM_COLOR,QUANTITY,ADD_ON_NEEDED,PURCHASE_ITEM,CHECKED_OUT
+1000,Tiki Torch,General Decoration,Tan,5,Y,Small Propane Can,N
+1001,Small Dodgeball,General Game Piece,Red,4,N,,N
+1002,Small Dodgeball,General Game Piece,Blue,2,N,,N
+1003,Small Dodgeball,General Game Piece,Yellow,4,N,,N
+1004,Small Dodgeball,General Game Piece,Purple,3,N,,N
+1005,Small Dodgeball,General Game Piece,Green,2,N,,N
+1006,Small Dodgeball,General Game Piece,Orange,3,N,,N
+1007,Large Dodgeball,General Game Piece,Red,1,N,,N
+1008,Skip-It,General Game Piece,Red,1,N,,N
+1009,Skip-It,General Game Piece,Yellow,2,N,,N
+1010,Skip-It,General Game Piece,Orange,2,N,,N
+1011,Skip-It,General Game Piece,Blue,1,N,,N
+1012,Skip-It,General Game Piece,Green,2,N,,N
+1013,Skip-It,General Game Piece,Purple,2,N,,N
+1014,Birdy,General Game Piece,White,2,N,,N
+1015,Bocce Ball,Outdoor Game Piece,Multicolor,1,N,,N
+1016,Large Tarp,General Functional Item,Tan,2,N,,N
+1017,Large Tarp,General Functional Item,White,1,N,,N
+1018,Small Tarp,General Functional Item,Tan,3,N,,N
+1019,Large Tarp,General Functional Item,Black,1,N,,N
+1020,Mini Strobe Light,Indoor Decoration,Black,6,Y,Double A Batteries,N
+1021,Disco Ball Light,Indoor Decoration,Black ,1,N,,N
+1022,Mini Globe Light,Indoor Decoration,Black ,2,Y,,N
+1023,Mini Beacon Light,Indoor Decoration,Blue,3,Y,,N
+1024,Tug of War Rope,General Game Piece,Tan,1,N,,N
+1025,Cornhole Board,Outdoor Game Piece,Blue,2,N,,N
+1026,Bean Bag,General Game Piece,Yellow,4,N,,N
+1027,Bean Bag,General Game Piece,Blue,4,N,,N
+1028,Bean Bag,General Game Piece,Red,1,N,,N
+1029,Large Strobe Light,Indoor Decoration,Silver,2,N,,N
+1030,Ring Toss,General Game Piece,Multicolor,1,N,,N
+1031,Car Sponge,General Functional Item,Yellow,2,N,,N
+1032,Car Sponge,General Functional Item,Green,2,N,,N
+1033,Car Sponge,General Functional Item,Pink,2,N,,N
+1034,Car Sponge,General Functional Item,Blue,2,N,,N
+1035,Car Sponge,General Functional Item,Orange,2,N,,N
+1036,PVC Jump Rope,General Game Piece,Green,1,N,,N
+1037,Soccer Ball,General Game Piece,Multicolor,1,N,,N
+1038,Football,General Game Piece,Blue,1,N,,N
+1039,Lawn Darts,Outdoor Game Piece,Multicolor,4,N,,N
+1040,Window Tent Cover,Outdoor Functional Item,Blue,3,N,,N
+1041,Tent Cover,Outdoor Functional Item,Blue,4,N,,N
+1042,Beach Ball,General Game Piece,Multicolor,1,N,,N
+1043,Lawn Jenga,Outdoor Game Piece,Brown,1,N,,N
+1044,Small Bucket,General Functional Item,Grey,13,N,,N
+1045,Water Cooler,General Functional Item,Blue,4,N,,N
+1046,Rolling Cooler,General Functional Item,Blue,2,N,,N
+1047,Tent Cover,Outdoor Functional Item,Blue,3,N,,N
+1048,Large Bucket,General Functional Item,Blue,3,N,,N
+1049,Large Bucket,General Functional Item,Green,1,N,,N
+1050,Popcorn Machine,Food,Red,1,Y,"Popcorn, Oil",N
