@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="aims.css" rel="stylesheet">
+    <title>AIMS::Delete From Inventory</title>
+</head>
+
+<body>
+    <div id="wrapper">
+    <!-- Header -->
+    <header>
+        <h1>Activities Inventory Management System (AIMS)</h1>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="rental.html">Rental Information</a></li>
+            <li><a href="inventory.php">Inventory</a></li>
+            <li><a href="contact.php">Contact Us</a></li>
+            <li><a href="signon.php">Sign In</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main -->
+    <div id="content">
+        <style>
+            button {background-color: #0A2240;
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          font-size: 16px;
+          display: block;
+          border: 1px solid white;}
+#submit {background-color: #0A2240;
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          font-size: 16px;
+          display: block;
+          border: 1px solid white;
+          align-self: center;
+          margin-right: auto;}
+        </style>
+    <main>
+        <?php include "loggedin.php";?>
+        <h2> Please enter the following fields:</h2>
+        <form action = "delete.php" method="POST">
+
+            <label for="IID">IID: </label>
+            <input type="text" name="IID" id="IID" required>
+            <button id="submit" type="submit" name="submit">Insert</button>
+
+
+        </form>
+        <form action="manage_inventory.php">
+            <button id="submit" type="submit" name="submit">Go Back</button>
+        </form>
+    </main>
+</div>
+</div>
+</body>
+</html>
+

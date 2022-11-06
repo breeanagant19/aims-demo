@@ -55,9 +55,8 @@ nav a {padding:16px;
 	display: block;
 	border-bottom: 1px solid #FFFFFF;}
 
-nav a:link {color: #FFFFFF;}
+nav a:link {color: #D3D3D3;}
 nav a:hover {color: #FFFFFF;}
-nav a:visited {color: #0039A6;}
 
 main {background-color:#FFFFFF;
 	  color:#000000;
@@ -73,7 +72,8 @@ footer {background-color: #4888B;
 		clear: both;
 		font-style: italic;}
 
-form { padding: 2em; }
+form {padding: 2em;}
+
 label { float: left;
 	   display: block;
 	   text-align: right;
@@ -83,13 +83,33 @@ label { float: left;
 input, textarea { display: block;
 				margin-bottom: 1em;}
 
-select { display: inline;
+select { display: block;
 		 margin-bottom: 1em;}
 
-#submit {display: block;
-		 margin-top: 20px;
-		 margin-left: 130px;}
-		 margin-left: 130px;}
+button {background-color: #0A2240;
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          font-size: 16px;
+          display: block;
+          border: 1px solid white;
+          align-self: center;
+          margin-right: auto;
+          margin-left: auto;}
+#submit {background-color: #0A2240;
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          font-size: 16px;
+          display: block;
+          border: 1px solid white;
+          align-self: center;
+          margin-right: auto;
+          margin-left: auto;}
 
 
 @media only screen and (min-width: 0px) and (max-width: 600px) {
@@ -118,7 +138,7 @@ select { display: inline;
 @media only screen
  and (min-width: 600px)
  and (max-width: 1024px) {
-	header {font-size: 175%;
+	header {font-size: %;
 			display: block;}
 	nav {float: none;
 		display: inline;
@@ -151,3 +171,5 @@ select { display: inline;
 		   width: 100%;}
 
 }
+
+

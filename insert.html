@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="aims.css" rel="stylesheet">
+    <title>AIMS::Insert Into Inventory</title>
+</head>
+
+<body>
+    <div id="wrapper">
+    <!-- Header -->
+    <header>
+        <h1>Activities Inventory Management System (AIMS)</h1>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="rental.html">Rental Information</a></li>
+            <li><a href="inventory.php">Inventory</a></li>
+            <li><a href="contact.php">Contact Us</a></li>
+            <li><a href="signon.php">Sign In</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main -->
+    <div id="content">
+        <style>
+            button {background-color: #0A2240;
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          font-size: 16px;
+          display: block;
+          border: 1px solid white;
+          align-self: center;
+          margin-right: auto;
+          margin-left: auto;}
+#submit {background-color: #0A2240;
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          font-size: 16px;
+          display: block;
+          border: 1px solid white;
+          align-self: center;
+          margin-right: auto;}
+
+        </style>
+    <main>
+        <?php include "loggedin.php";?>
+        <h2> Please enter the following fields:</h2>
+        <form action = "insert.php" method="POST">
+
+            <label for="IID">IID: </label>
+            <input type="text" name="IID" id="IID" required>
+
+            <label for="item_name">Item Name: </label>
+            <input type="text" name="item_name" id="item_name" required>
+
+            <label for="item_cat">Item Category: </label>
+            <select name="item_cat" id="item_cat" required>
+                <option value="General Decoration">General Decoration</option>
+                <option value="General Game Piece">General Game Piece</option>
+                <option value="Outdoor Game Piece">Outdoor Game Piece</option>
+                <option value="General Functional Item">General Functional Item</option>
+                <option value="Indoor Decoration">Indoor Decoration</option>
+                <option value="General Functional Item">General Functional Item</option>
+                <option value="Outdoor Functional Item">Outdoor Functional Item</option>
+                <option value="Food">Food</option>
+            </select>
+            <br>
+            <label for="item_color">Item Color: </label>
+            <input type="text" name="item_color" id="item_color" required>
+
+            <label for="quantity">Quantity: </label>
+            <input type="number" name="quantity" id="quantity" required>
+
+            <p>Add On Needed? (Y/N)</p>
+            <label for="add_on">Yes</label>
+            <input type="radio" name="add_on" id="add_on" value="1" required>
+            <label for="add_on">No</label>
+            <input type="radio" name="add_on" id="add_on" value="0">
+
+
+            <br>
+            <label for="purchase">If yes, what item(s) need to be purchases?</label>
+            <textarea id="purchase" name="purchase" rows="4" cols="50"></textarea>
+
+            <button id="submit" type="submit" name="submit">Insert</button>
+
+
+        </form>
+        <form action="manage_inventory.php">
+            <button id="submit" type="submit" name="submit">Go Back</button>
+        </form>
+    </main>
+</div>
+</div>
+</body>
+</html>
+

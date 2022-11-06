@@ -11,7 +11,6 @@
     <div id="wrapper">
     <!-- Header -->
     <header>
-        <img src="images/AIMSLOGO.png" alt="AIMS Logo">
         <h1>Activities Inventory Management System (AIMS)</h1>
     </header>
 
@@ -23,7 +22,7 @@
             <li><a href="rental.html">Rental Information</a></li>
             <li><a href="inventory.php">Inventory</a></li>
             <li><a href="contact.php">Contact Us</a></li>
-            <li><a href="signon.html">Sign In</a></li>
+            <li><a href="signon.php">Sign In</a></li>
         </ul>
     </nav>
 
@@ -51,7 +50,7 @@
             <label for="message">Please leave us a message:</label>
             <textarea id="message" name="message" rows="4" cols="50">Enter your message here...</textarea>
 
-            <p><?php echo $success; ?>
+            <p><?php echo $success;?>
             <br>
             <br>
             <button type="submit" name="submit">Submit</button>

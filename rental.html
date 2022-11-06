@@ -10,7 +10,6 @@
     <div id="wrapper">
     <!-- Header -->
     <header>
-        <img src="images/AIMSLOGO.png" alt="AIMS Logo">
         <h1>Activities Inventory Management System (AIMS)</h1>
     </header>
 
@@ -22,15 +21,41 @@
             <li><a href="rental.html">Rental Information</a></li>
             <li><a href="inventory.php">Inventory</a></li>
             <li><a href="contact.php">Contact Us</a></li>
-            <li><a href="signon.html">Sign In</a></li>
+            <li><a href="signon.php">Sign In</a></li>
         </ul>
     </nav>
 
     <!-- Main -->
     <div id="content">
     <main>
-        <h2> Rental Application</h2>
-      <p>This page is currently under construction. Please check back at a later time.</p>
+        <h2> Rental Application Instructions</h2>
+        <h4> Please fill out all required fields. If you are having issues with the form, please contact <a href="contact.php">Technical Support Staff.</a></h4>
+
+        <form action="rental.php" method="POST">
+            <label for="fname">First Name: </label>
+            <input type="text" name="fname" id="fname" required>
+
+            <label for="lname">Last Name: </label>
+            <input type="text" name="lname" id="lname" required>
+
+            <label for="email">Email Address: </label>
+            <input type="text" name="email" id="email" required>
+
+            <label for="IID">Item ID (IID): </label>
+            <input type="text" name="IID" id="IID" required>
+
+            <label for="pickup">Pickup Date: </label>
+            <input type="date" name="pickup" id="pickup" required>
+
+            <label for="dropoff">Drop-off date: </label>
+            <input type="date" name="dropoff" id="dropoff" required>
+
+            <label for="comments">Is there anything else we need to know?</label>
+            <br>
+            <textarea id="comments" name="comments" rows="4" cols="50"></textarea>
+
+            <button id="submit" type="submit" name="submit">Next</button>
+        </form>
     </main>
     </div>
     <!-- Footer -->
