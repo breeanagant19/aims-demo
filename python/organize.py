@@ -75,7 +75,7 @@ def create_database(connection):
         cursor.execute("DROP TABLE IF EXISTS manages;")
         cursor.execute("CREATE TABLE manages (EID int primary key, "
                        "UPDATED DATE, IID int, PID int,"
-                       "FOREIGN KEY (IID) REFERENCES items(IID),"
+                       "FOREIGN KEY (IID) REFERENCES items(IID) ON DELETE CASCADE,"
                        "FOREIGN KEY (PID) REFERENCES backend(PID));")
 
         #Printing created tables
@@ -159,7 +159,8 @@ def fill_renter(my_file, connection):
                 cursor.execute(sql3)
                 sql4 = ("UPDATE renter SET ITEM_COLOR = '%s' WHERE IID = '%s';" % (row[3],selected_IID))
                 cursor.execute(sql4)
-                sql5 = ("UPDATE items SET CHECKED_OUT = 1")
+                sql5 = ("UPDATE items SET CHECKED_OUT = 1 WHERE IID = '%s';" % row[0])
+                cursor.execute(sql5)
     connection.commit()
 
 if __name__ == "__main__":

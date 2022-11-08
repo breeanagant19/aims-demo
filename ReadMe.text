@@ -1,0 +1,18 @@
+Welcome to the GitHub Repository of the Activities Inventory Management System (AIMS).
+In this repository are all of the pages that makeup the AIMS website infrastructure to include
+the initial python script that created the database tables.
+
+If you are a renter, please follow these steps:
+1. Visit the webpage at http://3.84.22.160/
+This is an EC2 Instance that provides a public IP address so that anyone can access the rental application.
+2. Click "Rental Information"
+3. Complete the Rental Application
+4. If you incorrectly complete your application, please fill out a Contact Form on the "Contact Us" tab.
+
+
+If you are an Administrator and looking to manage the database, please follow these steps:
+1. Visit the webpage at http://3.84.22.160/
+2. Sign in using the credentials given to you by Technical Support Staff
+3. If you were not given credentials, please contact Technical Support Staff by filling out a Contract Form
+on the "Contact Us" tab.
+
