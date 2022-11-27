@@ -10,6 +10,9 @@
     <div id="wrapper">
     <!-- Header -->
     <header>
+        <?php include_once "loggedin.php"; ?>
+        <?php include_once "authorize.php"; ?>
+        <?php include "connect.php"; ?>
         <h1>Activities Inventory Management System (AIMS)</h1>
     </header>
 
@@ -62,12 +65,7 @@
 
         </style>
     <main>
-        <?php //if (!isset($_SESSION['username'])){
-            //header("Location: signon.php");} ?>
-        <?php include "connect.php"; ?>
-        <?php include "loggedin.php"; ?>
-
-    <h2> <center>Welcome!</center></h2>
+    <h2> <center>Welcome <?php echo $_SESSION['fname']?>!</center></h2>
     <h3><center>Please choose an option:</center></h3>
     <form class = "adminform" action = "insert.html" method = "POST">
         <button name="insert" type="submit">Add to Current Inventory</button>
@@ -77,6 +75,10 @@
     </form>
     <form class="adminform" action = "view.php" method="POST">
         <button name="view" type = "submit">View current rental applications</button>
+    </form>
+    <form class = "adminform" action ="index.html" method="POST">
+      <button name="logout" type="submit">Logout</button>
+      <?php session_destroy();?>
     </form>
       <p><center>If you are having issues accessing the form, <a href="contact.php">Please contact Technical Support Staff.</a></center></p>
 

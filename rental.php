@@ -28,7 +28,6 @@
     <!-- Main -->
     <div id="content">
     <main>
-        <h2>Review Your Application</h2>
         <?php include 'connect.php';?>
         <?php
         $fname = $_POST['fname'];
@@ -37,7 +36,10 @@
         $IID = $_POST['IID'];
         $pickup = $_POST['pickup'];
         $dropoff = $_POST['dropoff'];
+        $currentdate = date('Y-m-d');
 
+        if ($pickup >= $currentdate && $dropoff >= $currentdate){
+        echo "<h2>Review Your Application</h2>";
         $sql = "SELECT * FROM items WHERE IID='".$IID."'";
         $sql2 = "INSERT INTO renter (FNAME, LNAME, EMAIL, PICKUP, DROPOFF, ITEM_COLOR, ITEM_NAME, IID) VALUES('".$fname."','".$lname."','".$email."','".$pickup."','".$dropoff."','".$IID."')";
 
@@ -89,7 +91,11 @@
             }
          }
      }
-        ?>
+ }else {
+    echo "<h2>There was an error submitting your rental application.</h2>";
+    echo "Your pickup date is incorrect. Please try again.";
+    echo "<form action='rental.html' method='POST'><button  id='go back' type='submit' name ='submit'>Go Back</button></form>";
+ } ?>
     </main>
     </div>
     <!-- Footer -->

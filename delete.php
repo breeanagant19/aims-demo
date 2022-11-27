@@ -12,6 +12,9 @@
     <!-- Header -->
     <header>
         <h1>Activities Inventory Management System (AIMS)</h1>
+        <?php include_once "loggedin.php"; ?>
+        <?php include_once "authorize.php"; ?>
+        <?php include "connect.php"; ?>
     </header>
 
     <!-- Navigation -->
@@ -30,24 +33,21 @@
     <div id="content">
     <main>
 
-<?php
-include 'connect.php';
 
+<?php
 
 $IID = $_POST["IID"];
 if (empty($IID)) {
     echo("<h2>Item ID Required</h2>");
     echo "<form action='insert.html' method='POST'><button  id='go back' type='submit' name ='submit'>Try Again</button></form>";
 }else{
-    $sql = "SELECT *  FROM items WHERE IID='".$IID;
+    $sql = "SELECT *  FROM items WHERE IID='".$IID."'";
     $sql2 = "DELETE FROM items WHERE IID='".$IID."'";
     $result = $conn->query($sql);
     if (!empty($result) && $result->num_rows>0){
         if ($conn->query($sql2)===True){
             echo "<h2>Record deleted.</h2>";
             echo "<form action='manage_inventory.php' method='POST'><button  id='go back' type='submit' name ='submit'>Go Back</button></form>";
-            //Insert into manages table
-
         }else{
             echo"<h2>Issue deleting record:</h2>".$conn->error;
             echo "<form action='delete.html' method='POST'><button  id='go back' type='submit' name ='submit'>Try Again</button></form>";

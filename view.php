@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link href="aims.css" rel="stylesheet">
-    <title>AIMS::View Current Rental Applications</title>
+    <title>AIMS::Inventory</title>
 </head>
 
 <body>
@@ -11,6 +11,9 @@
     <!-- Header -->
     <header>
         <h1>Activities Inventory Management System (AIMS)</h1>
+        <?php include_once "loggedin.php"; ?>
+        <?php include_once "authorize.php"; ?>
+        <?php include "connect.php"; ?>
     </header>
 
     <!-- Navigation -->
@@ -28,18 +31,144 @@
     <!-- Main -->
     <div id="content">
     <main>
-        <h2>Sign In</h2>
-      <p><h3><b>Please sign in with the credentials that were provided to your by the Technical Support Staff</b></h3></p>
-      <?php include 'loggedin.php';?>
-      <form action="" method="POST">
-        <label for="username">Email:</label>
-        <input type="text" name="username" id="username" required>
+        <!-- Style for PHP table -->
+        <style>
+            table {border: 1px solid;
+                    width: 100%;}
 
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password" required>
+            th{
+                border: 1px solid;
+                background-color: #0A2240;
+                color: #ffffff;
+                width: 10%;
 
-        <button id="submit" type="submit" name="submit" onclick="manage_inventory.php">Login</button>
-      </form>
+            }
+            td {
+                border: 1px solid;
+                padding: 15px;
+                text-align: center;}
+
+            .checkboxes {
+              display: inline-table;
+              width: .1em;
+            }
+
+button {background-color: #0A2240;
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          font-size: 16px;
+          display: block;
+          border: 1px solid white;
+          align-self: center;
+          margin-right: auto;
+          margin-left: auto;}
+#submit {background-color: #0A2240;
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          font-size: 16px;
+          display: block;
+          border: 1px solid white;
+          align-self: center;
+          margin-right: auto;
+          margin-left: auto;}
+
+input, textarea {margin-left: auto;
+				margin-right: auto;
+				margin-bottom: 1em;}
+        </style>
+<?php $sql = "DELETE FROM renter WHERE PICKUP < curdate()";
+      $result = $conn->query($sql);
+?>
+
+    <h1><center>Current Inventory</center></h1>
+    <table><tr>
+        <th>RID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Pickup Time</th>
+        <th>Drop Off</th>
+        <th>Item ID</th>
+        <th>Item Name</th>
+        <th>Item Color</th>
+        <th>Assigned Administrator</th>
+
+    <form method="POST">
+    	<p><center>Enter the RID you want to manage:</center></p>
+    	<input type ="text" id="RID" name="RID">
+    	<button type="submit" id="submit" name="submit">Select</button>
+      <br>
+	</form>
+
+    </tr>
+        <?php
+        // Refer to connection file -- Connects to the database
+
+        //Echo table headers
+
+
+        //MySQL Select Statement & query
+        $sql = "SELECT * FROM renter";
+        $result = $conn->query($sql);
+
+        //Determines if there is data in the tables
+        //Checks to see if the number of rows from the query is more than 0
+        //Fetches each row from the query
+
+
+
+        if($result->num_rows > 0){
+            while ($row=$result->fetch_assoc()) {
+
+            //Prints each row in the table
+            echo "<tr>";
+            echo "<td>". $row['RID'] . "</td>";
+            echo "<td>". $row['FNAME'] . "</td>";
+            echo "<td>". $row["LNAME"]."</td>";
+            echo "<td>". $row['PICKUP'] . "</td>";
+            echo "<td>". $row['DROPOFF'] . "</td>";
+            echo "<td>". $row["IID"] ."</td>";
+            echo "<td>". $row["ITEM_NAME"]. "</td>";
+            echo "<td>". $row['ITEM_COLOR'] . "</td>";
+            echo "<td>". $row['PID'] . "</td>";
+            echo "</tr>";
+
+        }
+    }
+
+        ?>
+    </table>
+
+
+<!-- Used to update the renter table -->
+
+<?php
+if (isset($_POST['submit'])){
+  $RID = $_POST['RID'];
+  $sql = "SELECT * FROM backend";
+  $result = $conn->query($sql);
+  if ($result->num_rows > 0){
+    while ($row=$result->fetch_assoc()){
+      if($_SESSION['fname'] == $row['FNAME']){
+        $PID = $row['PID'];
+        $sql2 = "UPDATE renter SET PID = '".$PID."' WHERE RID = '".$RID."'";
+        $result2 = $conn->query($sql2);
+  }else{}
+  }
+		}
+	}
+
+?>
+
+<!-- Go back button -->
+<form action='manage_inventory.php' method='POST'>
+    <button  id='go back' type='submit' name ='submit'>Go Back</button>
+</form>
 
 
     </main>
