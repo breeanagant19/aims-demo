@@ -12,7 +12,6 @@
     <header>
         <h1>Activities Inventory Management System (AIMS)</h1>
         <?php include_once "loggedin.php"; ?>
-        <?php include_once "authorize.php"; ?>
         <?php include "connect.php"; ?>
     </header>
 

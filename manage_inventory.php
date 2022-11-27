@@ -11,7 +11,6 @@
     <!-- Header -->
     <header>
         <?php include_once "loggedin.php"; ?>
-        <?php include_once "authorize.php"; ?>
         <?php include "connect.php"; ?>
         <h1>Activities Inventory Management System (AIMS)</h1>
     </header>
@@ -81,9 +80,6 @@
       <?php session_destroy();?>
     </form>
       <p><center>If you are having issues accessing the form, <a href="contact.php">Please contact Technical Support Staff.</a></center></p>
-
-      <!-- Include a Log Out button -->
-      <!-- Make sure the pages for Admin/Tech are unavailable via search bar?-->
     </main>
     </div>
     <!-- Footer -->
