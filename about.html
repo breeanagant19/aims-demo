@@ -10,7 +10,6 @@
     <div id="wrapper">
     <!-- Header -->
     <header>
-        <img src="images/AIMSLOGO.png" alt="AIMS Logo">
         <h1>Activities Inventory Management System (AIMS)</h1>
     </header>
 
