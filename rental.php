@@ -54,16 +54,16 @@
 
         if ($result->num_rows>0){
             while ($row=$result->fetch_assoc()){
-                if ($row["CHECKED_OUT"]==1){
-                    echo "<h4>Sorry. That item is already checked out. See a list of available items <a href='inventory.php'>here.</a></h4>";
+                if ($row["CHECKED_OUT"]==1 && $row["QUANTITY"]==0){
+                    echo "<h4>Sorry. That item(s) is already checked out. See a list of available items <a href='inventory.php'>here.</a></h4>";
                     echo "<form action='rental.html' method='POST'><button  id='go back' type='submit' name ='submit'>Go Back</button></form>";
                 }else{
                     $sql2 = "INSERT INTO renter (FNAME, LNAME, EMAIL, PICKUP, DROPOFF, ITEM_COLOR, ITEM_NAME, IID) VALUES('".$fname."','".$lname."','".$email."','".$pickup."','".$dropoff."','".$row["ITEM_COLOR"]."','".$row["ITEM_NAME"]."','".$IID."')";
 
-                    $sql3 = "UPDATE items SET CHECKED_OUT=1 WHERE IID='".$IID."'";
+                    $sql3 = "UPDATE items SET CHECKED_OUT=1, QUANTITY = QUANTITY-1 WHERE IID='".$IID."'";
                     $result2 = $conn->query($sql3);
 
-                    if ($conn->query($sql2)=== TRUE && $result2==TRUE){
+                    if ($conn->query($sql2) === TRUE && $result2 === TRUE && $result){
                     echo "<h4>Your rental is complete!</h4>";
                     echo "<b>First Name: </b>".$fname."";
                     echo "<br>";
@@ -90,6 +90,10 @@
                 }
             }
          }
+     }else {
+        echo "The IID does not exist. Please refer to the list of our current inventory.";
+        echo "<form action='inventory.php' method='POST'><button  id='inventory' type='submit' name ='submit'>See Available Inventory</button></form>";
+        echo "<form action='rental.html' method='POST'><button  id='go back' type='submit' name ='submit'>Go Back</button></form>";
      }
  }else {
     echo "<h2>There was an error submitting your rental application.</h2>";

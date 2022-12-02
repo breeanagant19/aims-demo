@@ -11,7 +11,8 @@
     <!-- Header -->
     <header>
         <h1>Activities Inventory Management System (AIMS)</h1>
-        <?php include_once "loggedin.php"; ?>
+        <?php include"loggedin.php"; 
+        session_start();?>
         <?php include "connect.php"; ?>
     </header>
 
@@ -157,6 +158,7 @@ if (isset($_POST['submit'])){
         $PID = $row['PID'];
         $sql2 = "UPDATE renter SET PID = '".$PID."' WHERE RID = '".$RID."'";
         $result2 = $conn->query($sql2);
+        header("Location: view.php");
   }else{}
   }
 		}

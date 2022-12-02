@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <link href="aims.css" rel="stylesheet">
-    <title>AIMS::Homepage</title>
+    <title>AIMS::Insert Form</title>
 </head>
 
 <body>
@@ -12,7 +12,8 @@
     <!-- Header -->
     <header>
         <h1>Activities Inventory Management System (AIMS)</h1>
-        <?php include_once "loggedin.php"; ?>
+        <?php include "loggedin.php"; 
+        session_start();?>
         <?php include "connect.php"; ?>
     </header>
 
@@ -33,27 +34,32 @@
     <main>
 
 <?php
+//Assigns variables
 $IID = $_POST["IID"];
-$PURCHASE_ITEM = $_POST["purchase"];
 $CHECKED_OUT = 0;
-
-// Checks to see if the IID is empty. IID is required
+// Checks to see if the IID is empty.
 if (empty($IID)) {
     echo("<h2>Item ID Required</h2>");
     echo "<form action='insert.html' method='POST'><button  id='go back' type='submit' name ='submit'>Try Again</button></form>";
-}elseif (empty($_POST['purchase'])){
+}elseif($_POST["add_on"] == 0){
 
+            $PURCHASE_ITEM = "None";
+            //Checks to see if the IID already exists.
             $sql = "SELECT *  FROM items WHERE IID='".$IID."'";
 
             //Insert statement
-            $sql2 = "INSERT INTO items (IID, ITEM_NAME, ITEM_CATEGORY, ITEM_COLOR, QUANTITY, ADD_ON_NEEDED, CHECKED_OUT) VALUES('".$_POST["IID"]."','".$_POST["item_name"]."','".$_POST["item_color"]."','".$_POST["quantity"]."','".$_POST["add_on"]."','".$CHECKED_OUT."')";
+            $sql2 = "INSERT INTO items (IID, ITEM_NAME, ITEM_CATEGORY, ITEM_COLOR, QUANTITY, ADD_ON_NEEDED, PURCHASE_ITEM, CHECKED_OUT) VALUES('".$_POST["IID"]."','".$_POST["item_name"]."','".$_POST["item_cat"]."','".$_POST["item_color"]."','".$_POST["quantity"]."','".$_POST["add_on"]."','".$PURCHASE_ITEM. "','".$CHECKED_OUT."')";
 
+            //Update statement
             $sql3 = "UPDATE items SET ITEM_NAME='".$_POST["item_name"]."', QUANTITY='".$_POST["quantity"]."', ITEM_COLOR='".$_POST["item_color"]."', ADD_ON_NEEDED='".$_POST["add_on"]."' WHERE IID='".$IID."'";
 
+            //Updates the Manages table
             $sql4 = "INSERT INTO manages(UPDATED, IID, PID) VALUES('".date('Y-m-d')."', '".$IID."','".$_SESSION['PID']."')";
 
             $result = $conn->query($sql);
+            //Checking first sql statement (IF IID ALREADY EXISTS)
             if($result->num_rows > 0){
+                //Checks to see if sql3 has been run (UPDATE STATEMENT)
                 if ($conn->query($sql3) === TRUE){
                 echo "<h2>Record successfully updated.</h2>";
                 $result2 = $conn->query($sql4);
@@ -68,41 +74,41 @@ if (empty($IID)) {
             if ($conn->query($sql2) === TRUE){
                 echo "<h2>New record created</h2>";
                 $result2 = $conn->query($sql4);
-                echo $result2;
                 echo "<form action='manage_inventory.php' method='POST'><button  id='go back' type='submit' name ='submit'>Go Back</button></form>";
             }else{
                 echo $conn->error;
         }
     }
-}else {
-
+}elseif($_POST["add_on"]==1){
         $sql = "SELECT *  FROM items WHERE IID='".$IID."'";
 
-        $sql2 = "INSERT INTO items (IID, ITEM_NAME, ITEM_CATEGORY, ITEM_COLOR, QUANTITY, ADD_ON_NEEDED, PURCHASE_ITEM, CHECKED_OUT) VALUES('".$_POST['IID']."','".$_POST['item_name']."','".$_POST['item_color']."','".$_POST['quantity']."','".$_POST['add_on']."','".$_POST['purchase']."','".$CHECKED_OUT."')";
+        $sql2 = "INSERT INTO items (IID, ITEM_NAME, ITEM_CATEGORY, ITEM_COLOR, QUANTITY, ADD_ON_NEEDED, PURCHASE_ITEM, CHECKED_OUT) VALUES('".$_POST["IID"]."','".$_POST["item_name"]."','".$_POST["item_cat"]."','".$_POST["item_color"]."','".$_POST["quantity"]."','".$_POST["add_on"]."','".$_POST["purchase"]. "','".$CHECKED_OUT."')";
 
+        $sql3 = "UPDATE items SET ITEM_NAME='".$_POST['item_name']."', QUANTITY='".$_POST['quantity']."', ITEM_COLOR='".$_POST['item_color']."', ADD_ON_NEEDED='".$_POST['add_on']."', PURCHASE_ITEM='".$_POST["purchase"]."' WHERE IID ='".$IID."'";
 
-        $sql3 = "UPDATE items SET ITEM_NAME='".$_POST['item_name']."', QUANTITY='".$_POST['quantity']."', ITEM_COLOR='".$_POST['item_color']."', ADD_ON_NEEDED='".$_POST['add_on']."', PURCHASE_ITEM='".$_POST['purchase']."' WHERE IID ='".$IID."'";
-
-        $sql4 = "INSERT INTO manages(UPDATED, IID, PID) VALUES('".date('Y-m-d')."', '".$IID."','".$_SESSION['PID']."')";
+        $sql4 = "INSERT INTO manages(UPDATED, IID, PID) VALUES('".date('Y-m-d')."','".$IID."','".$_SESSION['PID']."')";
 
         $result = $conn->query($sql);
         if($result->num_rows > 0){
-                if ($conn->query($sql2)===TRUE){
-                echo "<h2>Record successfully inserted.</h2>";
-                $result2 = $conn->query($sql4);
-                echo "<form action='manage_inventory.php' method='POST'><button  id='go back' type='submit' name ='submit'>Go Back</button></form>";
-            }elseif ($conn->query($sql3) === TRUE){
-                echo "<h2>Record successfully updated.</h2>";
-                $result2 = $conn->query($sql4);
-                echo "<form action='manage_inventory.php' method='POST'><button  id='go back' type='submit' name ='submit'>Go Back</button></form>";
-            } else{
-                echo "Error Here!";
-                echo $conn->error;
+            if ($conn->query($sql3)===TRUE){
+            echo "<h2>New record created.</h2>";
+            $result2 = $conn->query($sql4);
+            echo "<form action='manage_inventory.php' method='POST'><button  id='go back' type='submit' name ='submit'>Go Back</button></form>";
+            }else{
+                echo "Something is wrong".$conn->error;}
+        }else{
+            if ($conn->query($sql2) === TRUE){
+            echo "<h2>Record successfully updated.</h2>";
+            $result2 = $conn->query($sql4);
+            echo "<form action='manage_inventory.php' method='POST'><button  id='go back' type='submit' name ='submit'>Go Back</button></form>";
         }
     }
+}else {
+        echo "Error!";
 }
+    
 
-    ?>
+?>
 </main>
 </div>
 </div>

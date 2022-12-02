@@ -9,8 +9,8 @@
 <body>
     <div id="wrapper">
     <!-- Header -->
-    <header>
-        <?php include_once "loggedin.php"; ?>
+    <header>      
+        <?php include "loggedin.php"; ?>
         <?php include "connect.php"; ?>
         <h1>Activities Inventory Management System (AIMS)</h1>
     </header>
@@ -26,8 +26,6 @@
             <li><a href="signon.php">Sign In</a></li>
         </ul>
     </nav>
-
-    <!-- Main -->
     <div id="content">
         <style>
         button {background-color: #0A2240;
@@ -63,8 +61,10 @@
         form {padding: 1em; }
 
         </style>
+
     <main>
-    <h2> <center>Welcome <?php echo $_SESSION['fname']?>!</center></h2>
+      <?php session_start();?>
+    <h2> <center>Welcome <?php echo $_SESSION['fname'];?>!</center></h2>
     <h3><center>Please choose an option:</center></h3>
     <form class = "adminform" action = "insert.html" method = "POST">
         <button name="insert" type="submit">Add to Current Inventory</button>
@@ -77,7 +77,6 @@
     </form>
     <form class = "adminform" action ="index.html" method="POST">
       <button name="logout" type="submit">Logout</button>
-      <?php session_destroy();?>
     </form>
       <p><center>If you are having issues accessing the form, <a href="contact.php">Please contact Technical Support Staff.</a></center></p>
     </main>

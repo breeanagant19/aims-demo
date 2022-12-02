@@ -73,7 +73,7 @@ def create_database(connection):
                        "CHECK (PICKUP < DROPOFF));")
         cursor.execute("ALTER TABLE renter AUTO_INCREMENT=1000;")
         cursor.execute("DROP TABLE IF EXISTS manages;")
-        cursor.execute("CREATE TABLE manages (EID int primary key, "
+        cursor.execute("CREATE TABLE manages (EID int primary key AUTO_INCREMENT, "
                        "UPDATED DATE, IID int, PID int,"
                        "FOREIGN KEY (IID) REFERENCES items(IID) ON DELETE CASCADE,"
                        "FOREIGN KEY (PID) REFERENCES backend(PID));")
