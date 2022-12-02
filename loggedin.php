@@ -34,6 +34,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
             $row = mysqli_fetch_assoc($result);
             if ($row['EMAIL'] === $username && $row['PASS'] === $password) {
                 echo "Logged in!";
+                session_start();
                 	$_SESSION['email'] = $username;
                 	$_SESSION['PID'] = $row['PID'];
                 	$_SESSION['fname'] = $row['FNAME'];

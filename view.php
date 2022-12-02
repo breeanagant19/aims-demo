@@ -154,7 +154,7 @@ if (isset($_POST['submit'])){
   $result = $conn->query($sql);
   if ($result->num_rows > 0){
     while ($row=$result->fetch_assoc()){
-      if($_SESSION['fname'] == $row['FNAME']){
+      if($_SESSION['fname'] == $row['FdcheNAME']){
         $PID = $row['PID'];
         $sql2 = "UPDATE renter SET PID = '".$PID."' WHERE RID = '".$RID."'";
         $result2 = $conn->query($sql2);
